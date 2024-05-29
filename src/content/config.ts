@@ -1,90 +1,68 @@
-// https://docs.astro.build/en/guides/content-collections/#defining-collections
-
 import { z, defineCollection } from 'astro:content';
-import { docsSchema } from '@astrojs/starlight/schema';
 
-const productsCollection = defineCollection({
-  type: 'content',
-    schema: ({ image }) => z.object({
+const metadataDefinition = () =>
+  z
+    .object({
+      title: z.string().optional(),
+      ignoreTitleTemplate: z.boolean().optional(),
+
+      canonical: z.string().url().optional(),
+
+      robots: z
+        .object({
+          index: z.boolean().optional(),
+          follow: z.boolean().optional(),
+        })
+        .optional(),
+
+      description: z.string().optional(),
+
+      openGraph: z
+        .object({
+          url: z.string().optional(),
+          siteName: z.string().optional(),
+          images: z
+            .array(
+              z.object({
+                url: z.string(),
+                width: z.number().optional(),
+                height: z.number().optional(),
+              })
+            )
+            .optional(),
+          locale: z.string().optional(),
+          type: z.string().optional(),
+        })
+        .optional(),
+
+      twitter: z
+        .object({
+          handle: z.string().optional(),
+          site: z.string().optional(),
+          cardType: z.string().optional(),
+        })
+        .optional(),
+    })
+    .optional();
+
+const postCollection = defineCollection({
+  schema: z.object({
+    publishDate: z.date().optional(),
+    updateDate: z.date().optional(),
+    draft: z.boolean().optional(),
+
     title: z.string(),
-    description: z.string(),
-    main: z.object({
-      id: z.number(),
-      content: z.string(),
-      imgCard: image(),
-      imgMain: image(),
-      imgAlt: z.string(),
-    }),
-    tabs: z.array(
-      z.object({
-        id: z.string(),
-        dataTab: z.string(),
-        title: z.string(),
-      })
-    ),
-    longDescription: z.object({
-      title: z.string(),
-      subTitle: z.string(),
-      btnTitle: z.string(),
-      btnURL: z.string(),
-    }),
-    descriptionList: z.array(
-      z.object({
-        title: z.string(),
-        subTitle: z.string(),
-      })
-    ),
-    specificationsLeft: z.array(
-      z.object({
-        title: z.string(),
-        subTitle: z.string(),
-      })
-    ),
-    specificationsRight: z.array(
-      z.object({
-        title: z.string(),
-        subTitle: z.string(),
-      })
-    ).optional(),
-    blueprints: z.object({
-      first: image().optional(),
-      second: image().optional(),
-    }),
-  }),
-});
+    excerpt: z.string().optional(),
+    image: z.string().optional(),
 
-const blogCollection = defineCollection({
-  type: "content",
-  schema: ({ image }) => z.object ({
-  title: z.string(),
-  description: z.string(),
-  contents: z.array(z.string()),
-  author: z.string(),
-  role: z.string().optional(),
-  authorImage: image(),
-  authorImageAlt: z.string(),
-  pubDate: z.date(),
-  cardImage: image(),
-  cardImageAlt: z.string(),
-  readTime: z.number(),
-  tags: z.array(z.string()).optional(),
-  }),
-});
+    category: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    author: z.string().optional(),
 
-const insightsCollection = defineCollection({
-  type: "content",
-  schema: ({ image }) => z.object ({
-  title: z.string(),
-  description: z.string(),
-  contents: z.array(z.string()),
-  cardImage: image(),
-  cardImageAlt: z.string(),
+    metadata: metadataDefinition(),
   }),
 });
 
 export const collections = {
-  docs: defineCollection({ schema: docsSchema() }),
-  'products': productsCollection,
-  'blog': blogCollection,
-  'insights': insightsCollection,
+  post: postCollection,
 };
