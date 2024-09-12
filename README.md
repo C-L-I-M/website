@@ -1,6 +1,6 @@
 # 🚀 CLIM website
 
-The website for the CLIM project is based on the **AstroWind** template. It is a free and open-source template to make your website using **[Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+The website for the CLIM project is based on the **AstroWind** [template](https://astrowind.vercel.app/). It is a free and open-source template to make your website using **[Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
 ## Table of Contents
 
@@ -10,10 +10,6 @@ The website for the CLIM project is based on the **AstroWind** template. It is a
   - [Commands](#commands)
   - [Configuration](#configuration)
   - [Deploy](#deploy)
-
-## Template Demo
-
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
 
 ## Getting started
 
