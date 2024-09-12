@@ -1,18 +1,18 @@
-import { getPermalink } from './utils/permalinks';
+import { getPermalink } from "./utils/permalinks";
 
 export const headerData = {
   links: [
     {
-      text: 'Home',
-      href: getPermalink('/'),
+      text: "Home",
+      href: getPermalink("/"),
     },
     {
-      text: 'About',
-      href: getPermalink('/about'),
+      text: "About",
+      href: getPermalink("/about"),
     },
     {
-      text: 'Contact',
-      href: getPermalink('/contact'),
+      text: "Contact",
+      href: getPermalink("/contact"),
     },
   ],
 };
@@ -20,21 +20,24 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Info',
+      title: "Info",
       links: [
         {
-          text: 'About',
-          href: getPermalink('/about'),
+          text: "About",
+          href: getPermalink("/about"),
         },
         {
-          text: 'Contact',
-          href: getPermalink('/contact'),
+          text: "Contact",
+          href: getPermalink("/contact"),
         },
       ],
     },
-
   ],
   socialLinks: [
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    {
+      ariaLabel: "Github",
+      icon: "tabler:brand-github",
+      href: "https://github.com/onwidget/astrowind",
+    },
   ],
 };
