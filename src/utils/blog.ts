@@ -1,7 +1,7 @@
 import type { PaginateFunction } from "astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import type { Post } from "~/types";
+import type { Post, Taxonomy } from "~/types";
 import { APP_BLOG } from "astrowind:config";
 import {
   cleanSlug,
@@ -117,7 +117,7 @@ const getNormalizedPost = async (
 const load = async function (): Promise<Array<Post>> {
   const posts = await getCollection("post");
   const normalizedPosts = posts.map(
-    async (post) => await getNormalizedPost(post),
+    async (post: CollectionEntry<"post">) => await getNormalizedPost(post),
   );
 
   const results = (await Promise.all(normalizedPosts))
@@ -230,7 +230,7 @@ export const getStaticPathsBlogCategory = async ({
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = {};
+  const categories: Record<string, Taxonomy> = {};
   posts.map((post) => {
     post.category?.slug && (categories[post.category?.slug] = post.category);
   });
@@ -258,7 +258,7 @@ export const getStaticPathsBlogTag = async ({
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = {};
+  const tags: Record<string, Taxonomy> = {};
   posts.map((post) => {
     Array.isArray(post.tags) &&
       post.tags.map((tag) => {
