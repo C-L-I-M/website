@@ -37,7 +37,7 @@ export const footerData = {
     {
       ariaLabel: "Github",
       icon: "tabler:brand-github",
-      href: "https://github.com/onwidget/astrowind",
+      href: "https://github.com/C-L-I-M",
     },
   ],
 };
