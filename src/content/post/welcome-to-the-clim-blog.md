@@ -12,7 +12,7 @@ metadata:
   canonical: https://www.clim.dev/welcome-to-the-clim-blog
 ---
 
-We created the CLIM so people can learn infrastrucutre by actually doing it:
+We created the CLIM so people can learn infrastructure by actually doing it:
 running services, automating the boring parts, and dealing with the
 consequences when something breaks at 2am. That is usually only learned while
 at work, where it's not easy to break things for fun.
