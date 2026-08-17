@@ -1,4 +1,4 @@
-import { getPermalink } from "./utils/permalinks";
+import { getBlogPermalink, getPermalink } from "./utils/permalinks";
 
 export const headerData = {
   links: [
@@ -9,6 +9,10 @@ export const headerData = {
     {
       text: "About",
       href: getPermalink("/about"),
+    },
+    {
+      text: "Blog",
+      href: getBlogPermalink(),
     },
     {
       text: "Contact",
@@ -25,6 +29,10 @@ export const footerData = {
         {
           text: "About",
           href: getPermalink("/about"),
+        },
+        {
+          text: "Blog",
+          href: getBlogPermalink(),
         },
         {
           text: "Contact",
